@@ -29,9 +29,7 @@ class LatLng {
   final double latitude;
   final double longitude;
 
-  const LatLng(this.latitude, this.longitude)
-      : assert(latitude >= -90 && latitude <= 90),
-        assert(longitude >= -180 && longitude <= 180);
+  const LatLng(this.latitude, this.longitude);
 
   double get latitudeInRad => degToRadian(latitude);
 
@@ -46,8 +44,7 @@ class LatLng {
       };
 
   @override
-  String toString() =>
-      'LatLng(latitude:${NumberFormat("0.0#####").format(latitude)}, '
+  String toString() => 'LatLng(latitude:${NumberFormat("0.0#####").format(latitude)}, '
       'longitude:${NumberFormat("0.0#####").format(longitude)})';
 
   /// Converts sexagesimal string into a lat/long value
@@ -102,13 +99,10 @@ class LatLng {
 
   @override
   bool operator ==(final Object other) =>
-      other is LatLng &&
-      latitude == other.latitude &&
-      longitude == other.longitude;
+      other is LatLng && latitude == other.latitude && longitude == other.longitude;
 
-  LatLng round({final int decimals = 6}) => LatLng(
-      _round(latitude, decimals: decimals),
-      _round(longitude, decimals: decimals));
+  LatLng round({final int decimals = 6}) =>
+      LatLng(_round(latitude, decimals: decimals), _round(longitude, decimals: decimals));
 
   //- private -----------------------------------------------------------------------------------
 
